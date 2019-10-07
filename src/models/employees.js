@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const messageSchema = new mongoose.Schema({
+const employeesSchema = new mongoose.Schema({
   text: {
     type: String,
     required: true,
@@ -8,6 +8,6 @@ const messageSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 });
 
-const Message = mongoose.model('Message', messageSchema);
+const employees = mongoose.model('employees', employeesSchema);
 
-export default Message;
+export default employees;

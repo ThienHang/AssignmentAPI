@@ -27,7 +27,7 @@ app.use(async (req, res, next) => {
 
 app.use('/session', routes.session);
 app.use('/users', routes.user);
-app.use('/messages', routes.message);
+app.use('/employees', routes.employees);
 
 // Start
 
@@ -37,7 +37,7 @@ connectDb().then(async () => {
   if (eraseDatabaseOnSync) {
     await Promise.all([
       models.User.deleteMany({}),
-      models.Message.deleteMany({}),
+      models.employees.deleteMany({}),
     ]);
 
     createUsersWithMessages();
@@ -50,31 +50,31 @@ connectDb().then(async () => {
 
 const createUsersWithMessages = async () => {
   const user1 = new models.User({
-    username: 'rwieruch',
+    username: 'Hoàng',
   });
 
   const user2 = new models.User({
-    username: 'ddavids',
+    username: 'Tuấn',
   });
 
-  const message1 = new models.Message({
-    text: 'Published the Road to learn React',
+  const employees1 = new models.employees({
+    text: 'ABC',
     user: user1.id,
   });
 
-  const message2 = new models.Message({
-    text: 'Happy to release ...',
+  const employees2 = new models.employees({
+    text: 'XYZ',
     user: user2.id,
   });
 
-  const message3 = new models.Message({
-    text: 'Published a complete ...',
+  const employees3 = new models.employees({
+    text: '....',
     user: user2.id,
   });
 
-  await message1.save();
-  await message2.save();
-  await message3.save();
+  await employees1.save();
+  await employees2.save();
+  await employees3.save();
 
   await user1.save();
   await user2.save();
